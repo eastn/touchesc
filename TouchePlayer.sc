@@ -8,17 +8,29 @@ each poller.
 TouchePlayer {
 	
 	var <>actions; // list of actions to access and perform per index;
+	var <message = 'node';
+	var <oscFunc;
 
 	*default {
 		^NameSpace(this, \default, {
-			
-		})
+			this.new;
+		});
+	}
+
+	*new { | actions, name = 'node' |
+		^this.newCopyArgs(actions, name).initTouchePlayer;
+	}
+
+	initTouchePlayer {
+		oscFunc = OSCFunc({ | name, state |
+			this.changed(name.asSymbol, state);
+		});
 	}
 
 	*enable {
 		this.default.enable;
 	}
 
-	
-	
+	enable { "I am enabled per default".postln; }
+
 }

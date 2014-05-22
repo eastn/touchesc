@@ -114,8 +114,8 @@ TouchePoller {
 		var inputVal;
 		//		broadcastAddress = NetAddr("255.255.255.0", 57120);
 		poller = {
-			this.openPort;
-			1.wait;
+			//			this.openPort;
+			//			1.wait;
 			"starting polling loop".postln;
 			loop {
 				inputVal = port.read;
