@@ -15,6 +15,7 @@ BroadcastOSC {
 	var <notifier; // sender from which the message is received;
 
 	*new { | hosts, message = \node, notifier |
+		NetAddr.broadcastFlab = true; // enable broadcasting over UDP
 		notifier ?? { notifier = TouchePoller.default };
 		^NameSpace(notifier, message, {
 			this.newCopyArgs(hosts, message, notifier).add;
