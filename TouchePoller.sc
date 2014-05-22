@@ -15,22 +15,21 @@ Done at Green Lab Valldaura.
 Wed, May 21 2014, 19:37 CEST
 */
 TouchePoller {
-	classvar default;
 
 	var window, inputDisplay, startStopButton;
 	var poller, port, broadcastAddress;
 	var serialPortName = "/dev/tty.usbmodem1411";
+	var serialPortNameField;
 	var <>sensorName = "aSensor";
 
 	var <>verbose = true;
 
 	var <state;
 
+	*initClass { StartUp add: { this.gui } }
+
 	*default {
-		default ?? {
-			default = this.new;
-		};
-		^default;
+		^NameSpace(\TouchePoller, \default, { this.new });
 	}
 
 	*start { this.default.start; }
@@ -44,10 +43,13 @@ TouchePoller {
 	gui {
 		window = Window("serial input display", Rect(0, 0, 200, 400)).front;
 		window.view.layout = VLayout(
-			Button().states_([["Post input devices"]]).action_({
+			Button().states_([["Find Serial Input Device"]]).action_({
 				SerialPort.listDevices;
+				this.guessPort;
 			}),
-			TextField().string_(serialPortName).action_({ | me |
+			serialPortNameField = TextField()
+			.string_(serialPortName)
+			.action_({ | me |
 				me.string.postln;
 				serialPortName = me.string;
 			}),
@@ -63,13 +65,29 @@ TouchePoller {
 		);
 	}
 
+	guessPort {
+		var devices, thePort;
+		devices = SerialPort.devices;
+		thePort = devices detect: { | d |
+			"/dev/tty.usb*".matchRegexp(d);
+		};
+		[thePort, thisMethod.name, thePort].postln;
+		if (thePort.isNil) {
+			"NO SERIAL PORT MATCHING /dev/tty.usb* FOUND!".postln;
+			"Please connect an Arduino to the USB port.".postln;
+		}{
+			{ serialPortNameField.string = thePort }.defer;
+			serialPortName = thePort;
+		}
+	}
+
 	start {
 		var inputVal;
 		//		broadcastAddress = NetAddr("255.255.255.0", 57120);
 		poller = {
 			"opening serial port".postln;
 			port = SerialPort(
-				"/dev/tty.usbmodem1411",
+				serialPortName,
 				baudrate: 9600,
 				crtscts: true
 			);
@@ -78,17 +96,20 @@ TouchePoller {
 			loop {
 				inputVal = port.read;
 				{inputDisplay.string = inputVal.asAscii.asString}.defer;
-				inputVal = inputVal - 48;
+				inputVal = this.massageInputByte(inputVal);
 				if (state != inputVal) {
 					state = inputVal;
 					this.changed(\node, sensorName, state);
-					// broadcastAddress.sendMsg("/node", sensorName, state);
 					if (verbose) {
 						[this, thisMethod.name, state].postln;
 					};
 				};
 			}
 		}.fork;
+	}
+
+	massageInputByte { | byte |
+		^byte - 48;
 	}
 
 	stop {
