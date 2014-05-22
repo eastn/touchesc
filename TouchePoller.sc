@@ -52,6 +52,7 @@ TouchePoller {
 			.action_({ | me |
 				me.string.postln;
 				serialPortName = me.string;
+				this.openPort;
 			}),
 			Button().states_([["Load host IP list"]]).action_({
 				{ | path | BroadcastOSC(path.load.postln); }.doPath;
@@ -77,6 +78,15 @@ TouchePoller {
 		);
 	}
 
+	openPort {
+		format("opening serial port: %", serialPortName).postln;
+			port = SerialPort(
+				serialPortName,
+				baudrate: 9600,
+				crtscts: true
+			)
+	}
+
 	guessPort {
 		var devices, thePort;
 		devices = SerialPort.devices;
@@ -90,12 +100,7 @@ TouchePoller {
 		}{
 			{ serialPortNameField.string = thePort }.defer;
 			serialPortName = thePort;
-			"opening serial port".postln;
-			port = SerialPort(
-				serialPortName,
-				baudrate: 9600,
-				crtscts: true
-			)
+			this.openPort;
 		}
 	}
 
