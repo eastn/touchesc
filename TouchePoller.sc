@@ -61,7 +61,19 @@ TouchePoller {
 			.action_({ | me |
 				[{ this.start }, { this.stop }][1 - me.value].value
 			}),
-			inputDisplay = StaticText().string_("not running")
+			inputDisplay = StaticText().string_("not running"),
+			Button().states_([["NO TOUCH"]]).action_({
+				port.put(0);
+			}),
+			Button().states_([["TOUCH"]]).action_({
+				port.put(1);
+			}),
+			Button().states_([["GRAB"]]).action_({
+				port.put(2);
+			}),
+			Button().states_([["SAVE"]]).action_({
+				port.put(255);
+			})
 		);
 	}
 
@@ -78,6 +90,12 @@ TouchePoller {
 		}{
 			{ serialPortNameField.string = thePort }.defer;
 			serialPortName = thePort;
+			"opening serial port".postln;
+			port = SerialPort(
+				serialPortName,
+				baudrate: 9600,
+				crtscts: true
+			)
 		}
 	}
 
@@ -85,17 +103,10 @@ TouchePoller {
 		var inputVal;
 		//		broadcastAddress = NetAddr("255.255.255.0", 57120);
 		poller = {
-			"opening serial port".postln;
-			port = SerialPort(
-				serialPortName,
-				baudrate: 9600,
-				crtscts: true
-			);
-			1.wait;
 			"starting polling loop".postln;
 			loop {
 				inputVal = port.read;
-				{inputDisplay.string = inputVal.asAscii.asString}.defer;
+				{inputDisplay.string = inputVal.asString}.defer;
 				inputVal = this.massageInputByte(inputVal);
 				if (state != inputVal) {
 					state = inputVal;
@@ -109,7 +120,8 @@ TouchePoller {
 	}
 
 	massageInputByte { | byte |
-		^byte - 48;
+		//		^byte - 48;
+		^byte;
 	}
 
 	stop {

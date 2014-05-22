@@ -1,6 +1,9 @@
 [
 NetAddr("127.0.0.1", 57120),
-NetAddr("169.254.235.246", 57120),
-NetAddr("192.168.5.255", 57120),  // BROADCAST supercollider
-NetAddr("192.168.5.255", 12000),  // BROADCAST
+// NetAddr("169.254.235.246", 57120),
+// NetAddr("192.168.5.255", 57120),  // BROADCAST supercollider
+// NetAddr("192.168.5.255", 12000),  // BROADCAST
+// NetAddr("192.168.5.234", 12000),
+NetAddr("192.168.5.3", 57120),
+NetAddr("192.168.5.4", 12000),
 ]
