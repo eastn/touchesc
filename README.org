@@ -36,6 +36,10 @@ The items in the ToucheSC GUI window are (from top to bottom):
 3. Button "Load host IP list".  Click this button to open a dialog box for loading the list of IPs to which the data from the Arduino will be broadcast.  The default list that is shared by members of a network should contain the IPs and port numbers for all computers in that want to share data through ToucheSC.  Additionally, this list may be edited to IPs and port numbers for sending to other software such as Processing, PD, Max, Grasshopper etc. on the local host computer (the computer that is running the local copy of the ToucheSC application).   See example below
 4. Start button: This button opens the serial port defined by 2 above, and starts a loop that reads incoming bytes as soon as they arrive.
 5. Display field "not running": This field displays the values of the bytes received from arduino once the polling loop starts.
+6. Button NOTOUCH: Click to calibrate no-touch state.
+7. Button TOUCH: Click to calibrate touch state
+8. Button GRAB: Click to calibrate no-touch state
+9. Button SAVE: Click to save calibration on eprom.  Arduino will retain the settings when disconnected from power.
 
 *** Example of Host IP List file
 
@@ -61,3 +65,5 @@ IP numbers other than "127.0.0.1" send to other computers in the network.  For e
 : NetAddr("169.254.235.246", 57120),
 
 This sends to a computer that has the IP number "169.254.235.246", on port 57120.  57120 is the default port of the SuperCollider language application (sclang).   If you want to send to another port, you may edit this.  Generally, both the IP and the port numbers for remote hosts should be handled centrally by one administrator of the network.
+
+*
