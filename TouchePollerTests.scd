@@ -21,15 +21,13 @@ TouchePoller.gui;
 \alex.addNotifier(TouchePoller.default, \state, { | state |
 	switch (state.postln,
 		0, {
-			if (~sound1.notNil) {
-				{
-			};
+			\alex.fadeOut(3);
 		},
 		1, {
-			(degree: 1 rrand: 5).play;
+			{ WhiteNoise.ar(0.1) } => \alex; 
 		},
 		2, {
-			(degree: 6 rrand: 6).play;
+			{ GrayNoise.ar(0.1) } => \alex; 
 		}
 	);
 });

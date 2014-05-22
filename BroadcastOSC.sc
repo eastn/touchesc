@@ -44,7 +44,6 @@ BroadcastOSC {
 
 	broadcast { | data |
 		// only send data up to the Notification instance 
-		[this, thisMethod.name, data].postln;
 		data = 	data[.. data.indexOf(data detect: _.isKindOf(Notification)) - 1];
 		hosts do: { | netAddr |
 			[this, thisMethod.name, netAddr, message, data].postln;

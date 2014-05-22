@@ -20,7 +20,7 @@ TouchePoller {
 	var poller, port, broadcastAddress;
 	var serialPortName = "/dev/tty.usbmodem1411";
 	var serialPortNameField;
-	var <>sensorName = "aSensor";
+	var <>sensorName = "touche";
 
 	var <>verbose = true;
 
@@ -56,6 +56,12 @@ TouchePoller {
 			}),
 			Button().states_([["Load host IP list"]]).action_({
 				{ | path | BroadcastOSC(path.load.postln); }.doPath;
+			}),
+			StaticText().string_("Name of your touche:"),
+			TextField().string_("touche")
+			.action_({ | me |
+				me.string.postln;
+				sensorName = me.string;
 			}),
 			startStopButton = Button()
 			.states_([["start"], ["stop"]])
@@ -107,6 +113,8 @@ TouchePoller {
 	start {
 		var inputVal;
 		//		broadcastAddress = NetAddr("255.255.255.0", 57120);
+		this.openPort;
+		1.wait;
 		poller = {
 			"starting polling loop".postln;
 			loop {
