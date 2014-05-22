@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>touchesc</title>
+<!-- 2014-05-22 Thu 18:37 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="IOANNIS ZANNOS" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">touchesc</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Installation</a></li>
+<li><a href="#sec-2">2. Use</a>
+<ul>
+<li>
+<ul>
+<li><a href="#sec-2-0-1">2.0.1. Example of Host IP List file</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+Broadcast data received from touche sweep frequency capacitive sensing system
+to a list of local actions and network OSC clients.
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Installation</h2>
+<div class="outline-text-2" id="text-1">
+<ol class="org-ol">
+<li>Download and install SuperCollider 3.x. (<a href="http://supercollider.sourceforge.net/downloads/">http://supercollider.sourceforge.net/downloads/</a>).
+</li>
+
+<li>If this is the first time you use SuperCollider, then start the SuperCollider application.  This will create the SuperCollider user support directory.
+</li>
+
+<li>In SuperCollider, choose from menu "File" the item "Open user support directory".
+</li>
+
+<li>In the user support directory, create a new folder "Extensions" (if that folder does not already exist).
+</li>
+
+<li>Drag the folder of the present library ("touchesc") into the "Extensions" folder.  You can also drag an alias (shortcut) of the "touchesc" folder instead into Extensions, instead of the folder itself.
+</li>
+
+<li>Download library "tiny-sc" from <a href="https://github.com/iani/tiny-sc/">https://github.com/iani/tiny-sc/</a>.  Direct link: <a href="https://github.com/iani/tiny-sc/archive/master.zip">https://github.com/iani/tiny-sc/archive/master.zip</a>
+</li>
+
+<li>Install tiny-sc by putting it "Extensions" as in step 5 above.
+</li>
+
+<li>Start SuperCollider, or if SuperCollider is already running, then recompile the library (Menu "Language", item "Recompile Class Library").
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><a id="ID-CC4430C2-2891-46DA-B3B8-CECAB44511FB" name="ID-CC4430C2-2891-46DA-B3B8-CECAB44511FB"></a><span class="section-number-2">2</span> Use</h2>
+<div class="outline-text-2" id="text-2">
+
+<p>
+Immediately after startup or recompile, touchesc creates a GUI window at the bottom left corner of the screen.  If this window is not visible because it is hidden from the editor (IDE) window, then switch to the application "sclang", or resize the editor window so that you can see the left part of the screen.
+</p>
+
+<p>
+The items in the ToucheSC GUI window are (from top to bottom):
+</p>
+
+<ol class="org-ol">
+<li>Button "Find Serial Input Device"": This button lets SC scan all serial ports and attempt to find a port whose name matches the expression "/dev/tty.usb*".  This is the default usb port on MacOS (Linux?  Windows?).  If a matching port is found, then ToucheSC sets itself to open and listen on that port.  Otherwise a warning is issued on the post window.  In that case, edit the text field below the "Find Serial Input Device" button and type "return" ("enter") to make ToucheSC use the new name for finding the USB port.
+</li>
+<li>Text field below "Find Serial Input Device":  Displays the name of the USB serial port, that will be used for input.  This name is updated by pushing the button "Find Serial Input Device".  See point 1 above about using this field.
+</li>
+<li>Button "Load host IP list".  Click this button to open a dialog box for loading the list of IPs to which the data from the Arduino will be broadcast.  The default list that is shared by members of a network should contain the IPs and port numbers for all computers in that want to share data through ToucheSC.  Additionally, this list may be edited to IPs and port numbers for sending to other software such as Processing, PD, Max, Grasshopper etc. on the local host computer (the computer that is running the local copy of the ToucheSC application).   See example below
+</li>
+<li>Start button: This button opens the serial port defined by 2 above, and starts a loop that reads incoming bytes as soon as they arrive.
+</li>
+<li>Display field "not running": This field displays the values of the bytes received from arduino once the polling loop starts.
+</li>
+<li>Button NOTOUCH: Click to calibrate no-touch state.
+</li>
+<li>Button TOUCH: Click to calibrate touch state
+</li>
+<li>Button GRAB: Click to calibrate no-touch state
+</li>
+<li>Button SAVE: Click to save calibration on eprom.  Arduino will retain the settings when disconnected from power.
+</li>
+</ol>
+</div>
+
+<div id="outline-container-sec-2-0-1" class="outline-4">
+<h4 id="sec-2-0-1"><span class="section-number-4">2.0.1</span> Example of Host IP List file</h4>
+<div class="outline-text-4" id="text-2-0-1">
+<pre class="example">
+[
+NetAddr("127.0.0.1", 10000),
+NetAddr("169.254.235.246", 57120),
+]
+</pre>
+
+<p>
+Comments on the above:
+</p>
+
+<pre class="example">
+NetAddr("127.0.0.1", 10000),
+</pre>
+
+<p>
+This sends the messages to the computer that is running the current local copy of ToucheSC ("localhost"), at port 10000.  You can change this number to send osc messages to a different application on your own computer, or you may even add multiple applications, for example like this:
+</p>
+
+
+<pre class="example">
+NetAddr("127.0.0.1", 10000),
+NetAddr("127.0.0.1", 9001),
+</pre>
+
+<p>
+IP numbers other than "127.0.0.1" send to other computers in the network.  For example:
+</p>
+
+<pre class="example">
+NetAddr("169.254.235.246", 57120),
+</pre>
+
+<p>
+This sends to a computer that has the IP number "169.254.235.246", on port 57120.  57120 is the default port of the SuperCollider language application (sclang).   If you want to send to another port, you may edit this.  Generally, both the IP and the port numbers for remote hosts should be handled centrally by one administrator of the network.
+</p>
+
+<p>
+*
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: IOANNIS ZANNOS</p>
+<p class="date">Created: 2014-05-22 Thu 18:37</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
