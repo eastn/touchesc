@@ -41,7 +41,7 @@ TouchePoller {
 	}
 
 	gui {
-		window = Window("serial input display", Rect(0, 0, 200, 400)).front;
+		window = Window("serial input display", Rect(0, 0, 200, 200)).front;
 		window.view.layout = VLayout(
 			Button().states_([["Find Serial Input Device"]]).action_({
 				SerialPort.listDevices;
